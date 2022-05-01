@@ -38,7 +38,8 @@ public class ReportingStructureServiceImpl implements ReportingStructureService{
         }
 
         //The Employees in directReports do not have their fields eagerly fetched, so fetch/set them now
-        root.getDirectReports().forEach(x -> x.setAllFields(employeeRepository.findByEmployeeId(x.getEmployeeId())));
+        root.getDirectReports().forEach(directReport ->
+                directReport.setAllFields(employeeRepository.findByEmployeeId(directReport.getEmployeeId())));
 
         //Count the direct reports in the hierarchy beneath the Employee
         for(Employee directReport : root.getDirectReports()){

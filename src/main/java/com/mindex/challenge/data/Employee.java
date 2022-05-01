@@ -60,4 +60,19 @@ public class Employee {
     public void setDirectReports(List<Employee> directReports) {
         this.directReports = directReports;
     }
+
+    /**
+     * Quality-of-life method for setting all fields to those of the "other" Employee. Useful for populating the fields
+     * when they are not eagerly fetched.
+     *
+     * @param other The Employee whose fields are being copied
+     */
+    public void setAllFields(Employee other){
+        this.employeeId = other.employeeId;
+        this.firstName = other.firstName;
+        this.lastName = other.lastName;
+        this.position = other.position;
+        this.department = other.department;
+        this.directReports = other.directReports;
+    }
 }
